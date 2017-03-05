@@ -1,4 +1,4 @@
-package ua.yyunikov.util;
+package com.yunikov.commons;
 
 import java.util.EnumSet;
 import java.util.Objects;
@@ -76,5 +76,19 @@ public final class EnumValue<E extends Enum<E>> {
         return EnumSet.allOf(enumClass)
                 .stream()
                 .filter(enumFieldFunction);
+    }
+
+    @Override
+    public boolean equals(final Object object) {
+        if (object instanceof EnumValue) {
+            return Objects.equals(enumClass, ((EnumValue) object).enumClass);
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(enumClass);
     }
 }

@@ -1,4 +1,4 @@
-package ua.yyunikov.util.fake;
+package com.yunikov.commons.fake;
 
 /**
  * @author yyunikov
@@ -6,8 +6,7 @@ package ua.yyunikov.util.fake;
 public enum  FakeEnum {
     ONE(1),
     ONE_AGAIN(1),
-    TWO(2),
-    THREE(3);
+    TWO(2);
 
     private final int index;
 
