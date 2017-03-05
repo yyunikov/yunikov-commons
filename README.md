@@ -6,10 +6,6 @@ Collection of common utility classes I miss in Java language and usually reuse o
 
 I couldn't find any well designed small library for myself which contain such classes, so I've created my own. 
 
-Also, a common used practice in Java is to create *Utils classes with static methods which I don't think is as a good object
-design, so I just don't use them. For more explanation on this I recommend you to read an
-[article by yegor256](http://www.yegor256.com/2014/05/05/oop-alternative-to-utility-classes.html).
-
 This project is intended to be small and contains the most reusable classes with no overhead.
 
 
