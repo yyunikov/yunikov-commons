@@ -5,7 +5,7 @@ Collection of common utility classes I miss in Java language and usually reuse o
 ## Why another commons library?
 
 A common used practice in Java is to create *Utils classes with static methods which I don't think is as a good object
-design. For moreexplanation on this I recommend you to read an
+design. For more explanation on this I recommend you to read an
 [article by yegor256](http://www.yegor256.com/2014/05/05/oop-alternative-to-utility-classes.html).
 
 This project is intended to be small and contains the most reusable classes with no overhead.
