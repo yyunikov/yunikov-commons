@@ -2,13 +2,6 @@
 
 Collection of common utility classes I miss in Java language and usually reuse on most of the projects.
 
-## Why another commons?
-
-I couldn't find any well designed small library for myself which contain such classes, so I've created my own. 
-
-This project is intended to be small and contains the most reusable classes with no overhead.
-
-
 ## LICENSE
 MIT License
 
