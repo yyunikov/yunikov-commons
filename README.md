@@ -2,6 +2,8 @@
 
 Collection of common utility classes I miss in Java language and usually reuse on most of the projects.
 
+Feel free to copy any class you like to your projects.
+
 ## LICENSE
 MIT License
 

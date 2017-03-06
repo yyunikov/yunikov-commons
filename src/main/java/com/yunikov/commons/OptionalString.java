@@ -8,6 +8,7 @@ import java.util.function.Supplier;
  * Represents and optional string which can be empty, null or not empty.
  *
  * @author yyunikov
+ * @since 1.8
  */
 public class OptionalString implements Emptyable, Supplier<String> {
 
@@ -37,6 +38,9 @@ public class OptionalString implements Emptyable, Supplier<String> {
         return str == null || str.isEmpty();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean equals(final Object o) {
         if (o instanceof OptionalString) {
@@ -51,6 +55,7 @@ public class OptionalString implements Emptyable, Supplier<String> {
      * Get's the string value if it is present. If value is null - {@link NoSuchElementException} is thrown.
      *
      * @return string value
+     * @throws NoSuchElementException if value is null
      */
     @Override
     public String get() {
@@ -61,11 +66,17 @@ public class OptionalString implements Emptyable, Supplier<String> {
         return str;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int hashCode() {
         return Objects.hash(str);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         return str;

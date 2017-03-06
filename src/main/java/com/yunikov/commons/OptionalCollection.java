@@ -9,6 +9,7 @@ import java.util.function.Supplier;
  * Represents and optional collection which can be empty, null or not empty.
  *
  * @author yyunikov
+ * @since 1.8
  */
 public class OptionalCollection<T> implements Emptyable, Supplier<Collection<T>> {
 
@@ -38,6 +39,9 @@ public class OptionalCollection<T> implements Emptyable, Supplier<Collection<T>>
         return collection == null || collection.isEmpty();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean equals(final Object o) {
         if (o instanceof OptionalCollection) {
@@ -52,6 +56,7 @@ public class OptionalCollection<T> implements Emptyable, Supplier<Collection<T>>
      * Get's the collection value if it is present. If value is null - {@link NoSuchElementException} is thrown.
      *
      * @return collection value
+     * @throws NoSuchElementException if value is null
      */
     @Override
     public Collection<T> get() {
@@ -62,11 +67,17 @@ public class OptionalCollection<T> implements Emptyable, Supplier<Collection<T>>
         return collection;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int hashCode() {
         return Objects.hash(collection);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         return collection.toString();

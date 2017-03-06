@@ -10,6 +10,7 @@ import java.util.stream.Stream;
  * Contains methods for working with specific enumeration, mainly for quick finding different instances of enum.
  *
  * @author yyunikov
+ * @since 1.8
  */
 public final class EnumValues<E extends Enum<E>> {
 
@@ -25,6 +26,7 @@ public final class EnumValues<E extends Enum<E>> {
      * @param enumClass non-null enumeration class
      * @param <E>       enumeration class as type
      * @return {@link EnumValues} object for enum class
+     * @throws NullPointerException if enum class is null
      */
     public static <E extends Enum<E>> EnumValues<E> of(final Class<E> enumClass) {
         Objects.requireNonNull(enumClass);
