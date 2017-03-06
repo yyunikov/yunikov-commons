@@ -5,19 +5,41 @@ import com.yunikov.commons.fake.FakeEnum;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Optional;
 import java.util.Set;
 
 /**
- * Tests for {@link EnumValue} class.
+ * Tests for {@link EnumValues} class.
  *
  * @author yyunikov
  */
-public class EnumValueTest {
+public class EnumValuesTest {
+
+    @Test
+    public void concats() {
+        Assert.assertEquals("ONE|ONE_AGAIN|TWO", fakeEnumValue().concat());
+    }
+
+    @Test
+    public void concatsFields() {
+        Assert.assertEquals("1|1|2", fakeEnumValue().concat(fakeEnum -> String.valueOf(fakeEnum.index())));
+    }
+
+    @Test
+    public void concatsFieldsWithAmpersand() {
+        Assert.assertEquals("1&1&2", fakeEnumValue().concat(fakeEnum -> String.valueOf(fakeEnum.index()), "&"));
+    }
+
+    @Test
+    public void convertsToNames() {
+        Assert.assertEquals(new ArrayList<>(Arrays.asList("ONE", "ONE_AGAIN", "TWO")), fakeEnumValue().toNames());
+    }
 
     @Test(expected = NullPointerException.class)
     public void doesNotAcceptNulls() {
-        EnumValue.of(null);
+        EnumValues.of(null);
     }
 
     @Test
@@ -59,11 +81,11 @@ public class EnumValueTest {
         Assert.assertTrue(fakeEnumValue().hashCode() != fakeAnotherEnumValue().hashCode());
     }
 
-    private EnumValue<FakeAnotherEnum> fakeAnotherEnumValue() {
-        return EnumValue.of(FakeAnotherEnum.class);
+    private EnumValues<FakeAnotherEnum> fakeAnotherEnumValue() {
+        return EnumValues.of(FakeAnotherEnum.class);
     }
 
-    private EnumValue<FakeEnum> fakeEnumValue() {
-        return EnumValue.of(FakeEnum.class);
+    private EnumValues<FakeEnum> fakeEnumValue() {
+        return EnumValues.of(FakeEnum.class);
     }
 }
