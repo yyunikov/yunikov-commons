@@ -37,6 +37,16 @@ public class OptionalString implements Emptyable, Supplier<String> {
         return str == null || str.isEmpty();
     }
 
+    @Override
+    public boolean equals(final Object o) {
+        if (o instanceof OptionalString) {
+            final OptionalString that = (OptionalString) o;
+            return Objects.equals(str, that.str);
+        }
+
+        return false;
+    }
+
     /**
      * Get's the string value if it is present. If value is null - {@link NoSuchElementException} is thrown.
      *
@@ -49,16 +59,6 @@ public class OptionalString implements Emptyable, Supplier<String> {
         }
 
         return str;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (o instanceof OptionalString) {
-            final OptionalString that = (OptionalString) o;
-            return Objects.equals(str, that.str);
-        }
-
-        return false;
     }
 
     @Override

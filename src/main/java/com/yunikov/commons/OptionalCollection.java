@@ -38,6 +38,16 @@ public class OptionalCollection<T> implements Emptyable, Supplier<Collection<T>>
         return collection == null || collection.isEmpty();
     }
 
+    @Override
+    public boolean equals(final Object o) {
+        if (o instanceof OptionalCollection) {
+            final OptionalCollection<?> that = (OptionalCollection<?>) o;
+            return Objects.equals(collection, that.collection);
+        }
+
+        return false;
+    }
+
     /**
      * Get's the collection value if it is present. If value is null - {@link NoSuchElementException} is thrown.
      *
@@ -50,16 +60,6 @@ public class OptionalCollection<T> implements Emptyable, Supplier<Collection<T>>
         }
 
         return collection;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (o instanceof OptionalCollection) {
-            final OptionalCollection<?> that = (OptionalCollection<?>) o;
-            return Objects.equals(collection, that.collection);
-        }
-
-        return false;
     }
 
     @Override

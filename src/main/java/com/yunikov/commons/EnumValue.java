@@ -25,7 +25,7 @@ public final class EnumValue<E extends Enum<E>> {
      * Returns a {@link EnumValue} object for enum class.
      *
      * @param enumClass non-null enumeration class
-     * @param <E> enumeration class as type
+     * @param <E>       enumeration class as type
      * @return {@link EnumValue} object for enum class
      */
     public static <E extends Enum<E>> EnumValue<E> of(final Class<E> enumClass) {
@@ -41,14 +41,23 @@ public final class EnumValue<E extends Enum<E>> {
      */
     public Set<E> allByPredicate(final Predicate<E> enumFieldFunction) {
         return streamByPredicate(enumFieldFunction)
-                        .collect(Collectors.toSet());
+                .collect(Collectors.toSet());
+    }
+
+    @Override
+    public boolean equals(final Object object) {
+        if (object instanceof EnumValue) {
+            return Objects.equals(enumClass, ((EnumValue) object).enumClass);
+        }
+
+        return false;
     }
 
     /**
      * Finds first enumeration which matches by name.
      *
      * @param name name of the enum value
-     * @param <T> enum class
+     * @param <T>  enum class
      * @return {@link java.util.Optional} enum which matches the name
      */
     public <T> Optional<E> firstByName(final T name) {
@@ -66,6 +75,11 @@ public final class EnumValue<E extends Enum<E>> {
                 .findFirst();
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(enumClass);
+    }
+
     /**
      * Finds all enum values which match the predicate.
      *
@@ -76,19 +90,5 @@ public final class EnumValue<E extends Enum<E>> {
         return EnumSet.allOf(enumClass)
                 .stream()
                 .filter(enumFieldFunction);
-    }
-
-    @Override
-    public boolean equals(final Object object) {
-        if (object instanceof EnumValue) {
-            return Objects.equals(enumClass, ((EnumValue) object).enumClass);
-        }
-
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(enumClass);
     }
 }

@@ -3,7 +3,7 @@ package com.yunikov.commons.fake;
 /**
  * @author yyunikov
  */
-public enum  FakeEnum {
+public enum FakeEnum {
     ONE(1),
     ONE_AGAIN(1),
     TWO(2);

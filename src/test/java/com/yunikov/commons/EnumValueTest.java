@@ -1,9 +1,9 @@
 package com.yunikov.commons;
 
 import com.yunikov.commons.fake.FakeAnotherEnum;
+import com.yunikov.commons.fake.FakeEnum;
 import org.junit.Assert;
 import org.junit.Test;
-import com.yunikov.commons.fake.FakeEnum;
 
 import java.util.Optional;
 import java.util.Set;
@@ -18,19 +18,6 @@ public class EnumValueTest {
     @Test(expected = NullPointerException.class)
     public void doesNotAcceptNulls() {
         EnumValue.of(null);
-    }
-
-    @Test
-    public void supportsEquals() {
-        Assert.assertEquals(fakeEnumValue(), fakeEnumValue());
-        Assert.assertNotEquals(fakeEnumValue(), null);
-        Assert.assertNotEquals(fakeEnumValue(), fakeAnotherEnumValue());
-    }
-
-    @Test
-    public void supportsHashCode() {
-        Assert.assertTrue(fakeEnumValue().hashCode() == fakeEnumValue().hashCode());
-        Assert.assertTrue(fakeEnumValue().hashCode() != fakeAnotherEnumValue().hashCode());
     }
 
     @Test
@@ -59,11 +46,24 @@ public class EnumValueTest {
         Assert.assertEquals(FakeEnum.ONE, oneEnum.get());
     }
 
-    private EnumValue<FakeEnum> fakeEnumValue() {
-        return EnumValue.of(FakeEnum.class);
+    @Test
+    public void supportsEquals() {
+        Assert.assertEquals(fakeEnumValue(), fakeEnumValue());
+        Assert.assertNotEquals(fakeEnumValue(), null);
+        Assert.assertNotEquals(fakeEnumValue(), fakeAnotherEnumValue());
+    }
+
+    @Test
+    public void supportsHashCode() {
+        Assert.assertTrue(fakeEnumValue().hashCode() == fakeEnumValue().hashCode());
+        Assert.assertTrue(fakeEnumValue().hashCode() != fakeAnotherEnumValue().hashCode());
     }
 
     private EnumValue<FakeAnotherEnum> fakeAnotherEnumValue() {
         return EnumValue.of(FakeAnotherEnum.class);
+    }
+
+    private EnumValue<FakeEnum> fakeEnumValue() {
+        return EnumValue.of(FakeEnum.class);
     }
 }
