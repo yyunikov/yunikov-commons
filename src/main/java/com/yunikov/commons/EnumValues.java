@@ -79,6 +79,9 @@ public final class EnumValues<E extends Enum<E>> {
         return sb.toString().substring(0, sb.toString().length() - symbol.length());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean equals(final Object object) {
         if (object instanceof EnumValues) {
@@ -110,6 +113,9 @@ public final class EnumValues<E extends Enum<E>> {
                 .findFirst();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int hashCode() {
         return Objects.hash(enumClass);
