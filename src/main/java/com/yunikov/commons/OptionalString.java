@@ -31,7 +31,7 @@ public class OptionalString implements Emptyable {
      * @return true if string is null or empty, false otherwise
      */
     @Override
-    public boolean isEmpty() {
+    public boolean empty() {
         return str == null || str.isEmpty();
     }
 

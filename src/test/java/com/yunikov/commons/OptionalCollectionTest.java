@@ -14,17 +14,17 @@ public class OptionalCollectionTest {
 
     @Test
     public void isEmptyOnNull() {
-        Assert.assertTrue(OptionalCollection.of(null).isEmpty());
+        Assert.assertTrue(OptionalCollection.of(null).empty());
     }
 
     @Test
     public void isEmptyOnEmptyCollection() {
-        Assert.assertTrue(emptyOptionalCollection().isEmpty());
+        Assert.assertTrue(emptyOptionalCollection().empty());
     }
 
     @Test
     public void isNotEmptyOnNotEmptyCollection() {
-        Assert.assertFalse(notEmptyOptionalCollection().isEmpty());
+        Assert.assertFalse(notEmptyOptionalCollection().empty());
     }
 
     private OptionalCollection notEmptyOptionalCollection() {

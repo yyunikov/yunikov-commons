@@ -32,7 +32,7 @@ public class OptionalCollection<T> implements Emptyable {
      * @return true if collection is null or empty, false otherwise
      */
     @Override
-    public boolean isEmpty() {
+    public boolean empty() {
         return collection == null || collection.isEmpty();
     }
 

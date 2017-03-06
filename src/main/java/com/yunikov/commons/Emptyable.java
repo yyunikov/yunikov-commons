@@ -13,5 +13,5 @@ public interface Emptyable {
      *
      * @return true if is empty, false otherwise
      */
-    boolean isEmpty();
+    boolean empty();
 }

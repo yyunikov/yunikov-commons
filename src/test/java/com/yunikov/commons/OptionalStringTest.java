@@ -12,17 +12,17 @@ public class OptionalStringTest {
 
     @Test
     public void isEmptyOnNull() {
-        Assert.assertTrue(OptionalString.of(null).isEmpty());
+        Assert.assertTrue(OptionalString.of(null).empty());
     }
 
     @Test
     public void isEmptyOnEmptyString() {
-        Assert.assertTrue(emptyOptionalString().isEmpty());
+        Assert.assertTrue(emptyOptionalString().empty());
     }
 
     @Test
     public void isNotEmptyOnNotEmptyString() {
-        Assert.assertFalse(notEmptyOptionalString().isEmpty());
+        Assert.assertFalse(notEmptyOptionalString().empty());
     }
 
     @Test
