@@ -1,4 +1,4 @@
-package com.yunikov.commons.fake;
+package com.yunikov.commons.tests.fake;
 
 /**
  * Fake enumeration used for tests.

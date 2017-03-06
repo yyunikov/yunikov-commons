@@ -1,5 +1,6 @@
-package com.yunikov.commons;
+package com.yunikov.commons.tests;
 
+import com.yunikov.commons.OptionalString;
 import org.junit.Assert;
 import org.junit.Test;
 

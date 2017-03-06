@@ -1,7 +1,8 @@
-package com.yunikov.commons;
+package com.yunikov.commons.tests;
 
-import com.yunikov.commons.fake.FakeAnotherEnum;
-import com.yunikov.commons.fake.FakeEnum;
+import com.yunikov.commons.EnumValues;
+import com.yunikov.commons.tests.fake.FakeAnotherEnum;
+import com.yunikov.commons.tests.fake.FakeEnum;
 import org.junit.Assert;
 import org.junit.Test;
 

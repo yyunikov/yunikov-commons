@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 public interface Mapping<SOURCE, TARGET> {
 
     /**
-     * Maps the source object to target.
+     * Maps the source object to target object.
      *
      * @param source source object
      * @return created target object
@@ -32,7 +32,7 @@ public interface Mapping<SOURCE, TARGET> {
     }
 
     /**
-     * Maps the source stream to a stream.
+     * Maps the source stream to a target stream.
      *
      * @param sources stream of source objects
      * @param createMethod method for creating a target object
@@ -50,7 +50,7 @@ public interface Mapping<SOURCE, TARGET> {
     }
 
     /**
-     * Maps the source stream to a list.
+     * Maps the source stream to a target list.
      *
      * @param sources stream of source objects
      * @param createMethod method for creating a target object
@@ -61,7 +61,7 @@ public interface Mapping<SOURCE, TARGET> {
     }
 
     /**
-     * Maps the source stream to a map.
+     * Maps the source stream to a target map.
      *
      * @param sources stream of source objects
      * @param createMethod method for creating a target object
