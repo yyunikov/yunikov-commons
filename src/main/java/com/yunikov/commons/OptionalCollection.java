@@ -1,14 +1,16 @@
 package com.yunikov.commons;
 
 import java.util.Collection;
+import java.util.NoSuchElementException;
 import java.util.Objects;
+import java.util.function.Supplier;
 
 /**
  * Represents and optional collection which can be empty, null or not empty.
  *
  * @author yyunikov
  */
-public class OptionalCollection<T> implements Emptyable {
+public class OptionalCollection<T> implements Emptyable, Supplier<Collection<T>> {
 
     private final Collection<T> collection;
 
@@ -36,6 +38,20 @@ public class OptionalCollection<T> implements Emptyable {
         return collection == null || collection.isEmpty();
     }
 
+    /**
+     * Get's the collection value if it is present. If value is null - {@link NoSuchElementException} is thrown.
+     *
+     * @return collection value
+     */
+    @Override
+    public Collection<T> get() {
+        if (collection == null) {
+            throw new NoSuchElementException("No value present");
+        }
+
+        return collection;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (o instanceof OptionalCollection) {
@@ -49,5 +65,10 @@ public class OptionalCollection<T> implements Emptyable {
     @Override
     public int hashCode() {
         return Objects.hash(collection);
+    }
+
+    @Override
+    public String toString() {
+        return collection.toString();
     }
 }

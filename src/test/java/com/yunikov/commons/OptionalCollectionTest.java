@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Collections;
+import java.util.NoSuchElementException;
 
 /**
  * Tests for {@link OptionalCollection} class.
@@ -13,22 +14,28 @@ import java.util.Collections;
 public class OptionalCollectionTest {
 
     @Test
-    public void isEmptyOnNull() {
-        Assert.assertTrue(OptionalCollection.of(null).empty());
-    }
-
-    @Test
-    public void isEmptyOnEmptyCollection() {
+    public void emptyOnEmptyCollection() {
         Assert.assertTrue(emptyOptionalCollection().empty());
     }
 
     @Test
-    public void isNotEmptyOnNotEmptyCollection() {
+    public void emptyOnNull() {
+        Assert.assertTrue(OptionalCollection.of(null).empty());
+    }
+
+    @Test
+    public void getsNonNullValue() {
+        Assert.assertNotNull(notEmptyOptionalCollection().get());
+    }
+
+    @Test
+    public void notEmptyOnNotEmptyCollection() {
         Assert.assertFalse(notEmptyOptionalCollection().empty());
     }
 
-    private OptionalCollection notEmptyOptionalCollection() {
-        return OptionalCollection.of(Collections.singleton("Test"));
+    @Test(expected = NoSuchElementException.class)
+    public void notGetsNullValue() {
+        OptionalCollection.of(null).get();
     }
 
     @Test
@@ -46,7 +53,16 @@ public class OptionalCollectionTest {
         Assert.assertTrue(emptyOptionalCollection().hashCode() != "".hashCode());
     }
 
+    @Test
+    public void supportsToString() {
+        Assert.assertEquals("[Test]", OptionalCollection.of(Collections.singleton("Test")).toString());
+    }
+
     private OptionalCollection emptyOptionalCollection() {
         return OptionalCollection.of(Collections.emptyList());
+    }
+
+    private OptionalCollection notEmptyOptionalCollection() {
+        return OptionalCollection.of(Collections.singleton("Test"));
     }
 }

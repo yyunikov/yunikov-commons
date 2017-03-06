@@ -3,6 +3,8 @@ package com.yunikov.commons;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.NoSuchElementException;
+
 /**
  * Tests for {@link OptionalString} class.
  *
@@ -11,18 +13,28 @@ import org.junit.Test;
 public class OptionalStringTest {
 
     @Test
-    public void isEmptyOnNull() {
-        Assert.assertTrue(OptionalString.of(null).empty());
-    }
-
-    @Test
-    public void isEmptyOnEmptyString() {
+    public void emptyOnEmptyString() {
         Assert.assertTrue(emptyOptionalString().empty());
     }
 
     @Test
-    public void isNotEmptyOnNotEmptyString() {
+    public void emptyOnNull() {
+        Assert.assertTrue(OptionalString.of(null).empty());
+    }
+
+    @Test
+    public void getsNonNullValue() {
+        Assert.assertNotNull(notEmptyOptionalString().get());
+    }
+
+    @Test
+    public void notEmptyOnNotEmptyString() {
         Assert.assertFalse(notEmptyOptionalString().empty());
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void notGetsNullValue() {
+        OptionalString.of(null).get();
     }
 
     @Test
@@ -38,6 +50,11 @@ public class OptionalStringTest {
         Assert.assertTrue(emptyOptionalString().hashCode() == emptyOptionalString().hashCode());
         Assert.assertTrue(emptyOptionalString().hashCode() != notEmptyOptionalString().hashCode());
         Assert.assertTrue(emptyOptionalString().hashCode() != new Integer(123).hashCode());
+    }
+
+    @Test
+    public void supportsToString() {
+        Assert.assertEquals("Test", OptionalString.of("Test").toString());
     }
 
     private OptionalString emptyOptionalString() {

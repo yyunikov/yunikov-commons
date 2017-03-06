@@ -1,13 +1,15 @@
 package com.yunikov.commons;
 
+import java.util.NoSuchElementException;
 import java.util.Objects;
+import java.util.function.Supplier;
 
 /**
  * Represents and optional string which can be empty, null or not empty.
  *
  * @author yyunikov
  */
-public class OptionalString implements Emptyable {
+public class OptionalString implements Emptyable, Supplier<String> {
 
     private final String str;
 
@@ -35,6 +37,20 @@ public class OptionalString implements Emptyable {
         return str == null || str.isEmpty();
     }
 
+    /**
+     * Get's the string value if it is present. If value is null - {@link NoSuchElementException} is thrown.
+     *
+     * @return string value
+     */
+    @Override
+    public String get() {
+        if (str == null) {
+            throw new NoSuchElementException("No value present");
+        }
+
+        return str;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (o instanceof OptionalString) {
@@ -48,5 +64,10 @@ public class OptionalString implements Emptyable {
     @Override
     public int hashCode() {
         return Objects.hash(str);
+    }
+
+    @Override
+    public String toString() {
+        return str;
     }
 }
