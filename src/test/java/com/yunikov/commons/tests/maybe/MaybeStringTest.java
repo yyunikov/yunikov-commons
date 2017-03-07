@@ -1,17 +1,17 @@
-package com.yunikov.commons.tests;
+package com.yunikov.commons.tests.maybe;
 
-import com.yunikov.commons.OptionalString;
+import com.yunikov.commons.maybe.MaybeString;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.NoSuchElementException;
 
 /**
- * Tests for {@link OptionalString} class.
+ * Tests for {@link MaybeString} class.
  *
  * @author yyunikov
  */
-public class OptionalStringTest {
+public class MaybeStringTest {
 
     @Test
     public void emptyOnEmptyString() {
@@ -20,7 +20,7 @@ public class OptionalStringTest {
 
     @Test
     public void emptyOnNull() {
-        Assert.assertTrue(OptionalString.of(null).empty());
+        Assert.assertTrue(MaybeString.of(null).empty());
     }
 
     @Test
@@ -35,7 +35,7 @@ public class OptionalStringTest {
 
     @Test(expected = NoSuchElementException.class)
     public void notGetsNullValue() {
-        OptionalString.of(null).get();
+        MaybeString.of(null).get();
     }
 
     @Test
@@ -55,14 +55,14 @@ public class OptionalStringTest {
 
     @Test
     public void supportsToString() {
-        Assert.assertEquals("Test", OptionalString.of("Test").toString());
+        Assert.assertEquals("Test", MaybeString.of("Test").toString());
     }
 
-    private OptionalString emptyOptionalString() {
-        return OptionalString.of("");
+    private MaybeString emptyOptionalString() {
+        return MaybeString.of("");
     }
 
-    private OptionalString notEmptyOptionalString() {
-        return OptionalString.of("Test");
+    private MaybeString notEmptyOptionalString() {
+        return MaybeString.of("Test");
     }
 }

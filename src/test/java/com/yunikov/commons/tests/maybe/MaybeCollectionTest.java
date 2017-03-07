@@ -1,6 +1,6 @@
-package com.yunikov.commons.tests;
+package com.yunikov.commons.tests.maybe;
 
-import com.yunikov.commons.OptionalCollection;
+import com.yunikov.commons.maybe.MaybeCollection;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -8,11 +8,11 @@ import java.util.Collections;
 import java.util.NoSuchElementException;
 
 /**
- * Tests for {@link OptionalCollection} class.
+ * Tests for {@link MaybeCollection} class.
  *
  * @author yyunikov
  */
-public class OptionalCollectionTest {
+public class MaybeCollectionTest {
 
     @Test
     public void emptyOnEmptyCollection() {
@@ -21,7 +21,7 @@ public class OptionalCollectionTest {
 
     @Test
     public void emptyOnNull() {
-        Assert.assertTrue(OptionalCollection.of(null).empty());
+        Assert.assertTrue(MaybeCollection.of(null).empty());
     }
 
     @Test
@@ -36,7 +36,7 @@ public class OptionalCollectionTest {
 
     @Test(expected = NoSuchElementException.class)
     public void notGetsNullValue() {
-        OptionalCollection.of(null).get();
+        MaybeCollection.of(null).get();
     }
 
     @Test
@@ -56,14 +56,14 @@ public class OptionalCollectionTest {
 
     @Test
     public void supportsToString() {
-        Assert.assertEquals("[Test]", OptionalCollection.of(Collections.singleton("Test")).toString());
+        Assert.assertEquals("[Test]", MaybeCollection.of(Collections.singleton("Test")).toString());
     }
 
-    private OptionalCollection emptyOptionalCollection() {
-        return OptionalCollection.of(Collections.emptyList());
+    private MaybeCollection emptyOptionalCollection() {
+        return MaybeCollection.of(Collections.emptyList());
     }
 
-    private OptionalCollection notEmptyOptionalCollection() {
-        return OptionalCollection.of(Collections.singleton("Test"));
+    private MaybeCollection notEmptyOptionalCollection() {
+        return MaybeCollection.of(Collections.singleton("Test"));
     }
 }
