@@ -9,8 +9,10 @@ Here are the few most often used:
 - [EnumValues](https://github.com/yyunikov/yunikov-commons/blob/master/src/main/java/com/yunikov/commons/EnumValues.java)
 - [Lazy](https://github.com/yyunikov/yunikov-commons/blob/master/src/main/java/com/yunikov/commons/Lazy.java)
 - [Mapping](https://github.com/yyunikov/yunikov-commons/blob/master/src/main/java/com/yunikov/commons/Mapping.java)
-- [OptionalString](https://github.com/yyunikov/yunikov-commons/blob/master/src/main/java/com/yunikov/commons/OptionalString.java)
-- [OptionalCollection](https://github.com/yyunikov/yunikov-commons/blob/master/src/main/java/com/yunikov/commons/OptionalCollection.java)
+- [Maybe](https://github.com/yyunikov/yunikov-commons/blob/master/src/main/java/com/yunikov/commons/maybe/Maybe.java)
+- [MaybeString](https://github.com/yyunikov/yunikov-commons/blob/master/src/main/java/com/yunikov/commons/maybe/MaybeString.java)
+- [MaybeBlankString](https://github.com/yyunikov/yunikov-commons/blob/master/src/main/java/com/yunikov/commons/maybe/MaybeBlankString.java)
+- [MaybeCollection](https://github.com/yyunikov/yunikov-commons/blob/master/src/main/java/com/yunikov/commons/maybe/MaybeCollection.java)
 - [Ternary or Tri functional interfaces](https://github.com/yyunikov/yunikov-commons/tree/master/src/main/java/com/yunikov/commons/function)
 - [Tuple](https://github.com/yyunikov/yunikov-commons/blob/master/src/main/java/com/yunikov/commons/Tuple.java)
 
