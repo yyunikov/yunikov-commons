@@ -23,7 +23,7 @@ public class Lazy<T> {
      * @param lazySupplier supplier of lazy initialization function
      * @return value
      */
-    public T get(final Supplier<T> lazySupplier) {
+    public T get(final Supplier<? extends T> lazySupplier) {
         if (obj == null) {
             obj = lazySupplier.get();
         }

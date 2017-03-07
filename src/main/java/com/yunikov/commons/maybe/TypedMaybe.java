@@ -2,9 +2,12 @@ package com.yunikov.commons.maybe;
 
 import java.util.NoSuchElementException;
 import java.util.Objects;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
+ * Generic abstract {@link Maybe} object.
+ *
  * @author yyunikov
  */
 public abstract class TypedMaybe<T> implements Maybe, Supplier<T> {
@@ -28,6 +31,54 @@ public abstract class TypedMaybe<T> implements Maybe, Supplier<T> {
         }
 
         return value;
+    }
+
+    /**
+     * Executes a function if value is not empty.
+     *
+     * @param consumer function to execute
+     * @return {@link TypedMaybe} instance to perform further operation
+     */
+    public TypedMaybe<T> ifNotEmpty(final Consumer<? super T> consumer) {
+        if (!empty()) {
+            consumer.accept(value);
+        }
+
+        return this;
+    }
+
+    /**
+     * Executes a function if value is empty.
+     *
+     * @param consumer function to execute
+     * @return {@link TypedMaybe} instance to perform further operation
+     */
+    public TypedMaybe<T> ifEmpty(final Consumer<? super T> consumer) {
+        if (empty()) {
+            consumer.accept(value);
+        }
+
+        return this;
+    }
+
+    /**
+     * Gets the value if not empty, otherwise gets the other value.
+     *
+     * @param other other value
+     * @return not empty value or other value
+     */
+    public T getOrElse(final T other) {
+        return !empty() ? value : other;
+    }
+
+    /**
+     * Gets the value if not empty, otherwise executes the provided function.
+     *
+     * @param other other function
+     * @return not empty value or performs other function
+     */
+    public T getOrElse(final Supplier<? extends T> other) {
+        return !empty() ? value : other.get();
     }
 
     /**
