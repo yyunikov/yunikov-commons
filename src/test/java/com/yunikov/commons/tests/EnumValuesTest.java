@@ -1,8 +1,6 @@
 package com.yunikov.commons.tests;
 
 import com.yunikov.commons.EnumValues;
-import com.yunikov.commons.tests.fake.FakeAnotherEnum;
-import com.yunikov.commons.tests.fake.FakeEnum;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -17,6 +15,25 @@ import java.util.Set;
  * @author yyunikov
  */
 public class EnumValuesTest {
+
+    private enum FakeEnum {
+        ONE(1),
+        ONE_AGAIN(1),
+        TWO(2);
+
+        private final int index;
+
+        FakeEnum(final int index) {
+            this.index = index;
+        }
+
+        public int index() {
+            return index;
+        }
+    }
+
+    private enum FakeAnotherEnum {
+    }
 
     @Test
     public void concats() {
