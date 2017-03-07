@@ -20,7 +20,7 @@ public class RepeatStatement extends Statement {
 
     @Override
     public void evaluate() throws Throwable {
-        for(int i = 0; i < times; i++) {
+        for (int i = 0; i < times; i++) {
             statement.evaluate();
         }
     }

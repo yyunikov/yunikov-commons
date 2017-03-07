@@ -15,7 +15,7 @@ public class RepeatRule implements TestRule {
     @Override
     public Statement apply(final Statement base, final Description description) {
         final Repeat repeat = description.getAnnotation(Repeat.class);
-        if(repeat != null) {
+        if (repeat != null) {
             final int times = repeat.times();
             return new RepeatStatement(times, base);
         }

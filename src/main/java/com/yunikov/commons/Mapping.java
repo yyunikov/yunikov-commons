@@ -34,7 +34,7 @@ public interface Mapping<SOURCE, TARGET> {
     /**
      * Maps the source stream to a target stream.
      *
-     * @param sources stream of source objects
+     * @param sources      stream of source objects
      * @param createMethod method for creating a target object
      * @return stream of target objects
      */
@@ -52,7 +52,7 @@ public interface Mapping<SOURCE, TARGET> {
     /**
      * Maps the source stream to a target list.
      *
-     * @param sources stream of source objects
+     * @param sources      stream of source objects
      * @param createMethod method for creating a target object
      * @return list of target objects
      */
@@ -63,7 +63,7 @@ public interface Mapping<SOURCE, TARGET> {
     /**
      * Maps the source stream to a target map.
      *
-     * @param sources stream of source objects
+     * @param sources      stream of source objects
      * @param createMethod method for creating a target object
      * @return map of target objects
      */

@@ -19,6 +19,19 @@ public abstract class TypedMaybe<T> implements Maybe, Supplier<T> {
     }
 
     /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean equals(final Object object) {
+        if (object instanceof TypedMaybe) {
+            final TypedMaybe<?> that = (TypedMaybe<?>) object;
+            return Objects.equals(value, that.value);
+        }
+
+        return false;
+    }
+
+    /**
      * Get's the value if it is present. If value is null - {@link NoSuchElementException} is thrown.
      *
      * @return value
@@ -34,17 +47,31 @@ public abstract class TypedMaybe<T> implements Maybe, Supplier<T> {
     }
 
     /**
-     * Executes a function if value is not empty.
+     * Gets the value if not empty, otherwise executes the provided function.
      *
-     * @param consumer function to execute
-     * @return {@link TypedMaybe} instance to perform further operation
+     * @param other other function
+     * @return not empty value or performs other function
      */
-    public TypedMaybe<T> ifNotEmpty(final Consumer<? super T> consumer) {
-        if (!empty()) {
-            consumer.accept(value);
-        }
+    public T getOrElse(final Supplier<? extends T> other) {
+        return !empty() ? value : other.get();
+    }
 
-        return this;
+    /**
+     * Gets the value if not empty, otherwise gets the other value.
+     *
+     * @param other other value
+     * @return not empty value or other value
+     */
+    public T getOrElse(final T other) {
+        return !empty() ? value : other;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 
     /**
@@ -62,44 +89,17 @@ public abstract class TypedMaybe<T> implements Maybe, Supplier<T> {
     }
 
     /**
-     * Gets the value if not empty, otherwise gets the other value.
+     * Executes a function if value is not empty.
      *
-     * @param other other value
-     * @return not empty value or other value
+     * @param consumer function to execute
+     * @return {@link TypedMaybe} instance to perform further operation
      */
-    public T getOrElse(final T other) {
-        return !empty() ? value : other;
-    }
-
-    /**
-     * Gets the value if not empty, otherwise executes the provided function.
-     *
-     * @param other other function
-     * @return not empty value or performs other function
-     */
-    public T getOrElse(final Supplier<? extends T> other) {
-        return !empty() ? value : other.get();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean equals(final Object object) {
-        if (object instanceof TypedMaybe) {
-            final TypedMaybe<?> that = (TypedMaybe<?>) object;
-            return Objects.equals(value, that.value);
+    public TypedMaybe<T> ifNotEmpty(final Consumer<? super T> consumer) {
+        if (!empty()) {
+            consumer.accept(value);
         }
 
-        return false;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(value);
+        return this;
     }
 
     /**

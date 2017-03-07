@@ -10,7 +10,6 @@ import java.util.function.Predicate;
  * @param <T> the type of the first argument to the predicate
  * @param <U> the type of the second argument the predicate
  * @param <P> the type of the third argument the predicate
- *
  * @see Predicate
  * @since 1.8
  */
@@ -33,7 +32,7 @@ public interface TriPredicate<T, U, P> {
      * AND of this predicate and another.  When evaluating the composed
      * predicate, if this predicate is {@code false}, then the {@code other}
      * predicate is not evaluated.
-     *
+     * <p>
      * <p>Any exceptions thrown during evaluation of either predicate are relayed
      * to the caller; if evaluation of this predicate throws an exception, the
      * {@code other} predicate will not be evaluated.
@@ -65,7 +64,7 @@ public interface TriPredicate<T, U, P> {
      * OR of this predicate and another.  When evaluating the composed
      * predicate, if this predicate is {@code true}, then the {@code other}
      * predicate is not evaluated.
-     *
+     * <p>
      * <p>Any exceptions thrown during evaluation of either predicate are relayed
      * to the caller; if evaluation of this predicate throws an exception, the
      * {@code other} predicate will not be evaluated.

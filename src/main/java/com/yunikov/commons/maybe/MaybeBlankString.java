@@ -22,7 +22,6 @@ public final class MaybeBlankString extends MaybeString {
         return new MaybeBlankString(str);
     }
 
-
     /**
      * Shows if string is null, blank or empty.
      *

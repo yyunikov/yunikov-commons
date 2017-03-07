@@ -9,7 +9,6 @@ import java.util.function.UnaryOperator;
  * the same type.
  *
  * @param <T> the type of the operands and result of the operator
- *
  * @see TriFunction
  * @see UnaryOperator
  * @since 1.8

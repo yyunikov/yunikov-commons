@@ -30,13 +30,11 @@ public abstract class TypedMaybeTest<T> {
     }
 
     @Test
-    public void notEmptyOnNotEmptyValue() {
-        Assert.assertFalse(notEmptyMaybe().empty());
-    }
-
-    @Test(expected = NoSuchElementException.class)
-    public void notGetsNullValue() {
-        nullMaybe().get();
+    public void getsOnOrElse() {
+        notEmptyMaybe().getOrElse(() -> {
+            Assert.fail("This should never by called");
+            return null;
+        });
     }
 
     @Test
@@ -50,11 +48,13 @@ public abstract class TypedMaybeTest<T> {
     }
 
     @Test
-    public void getsOnOrElse() {
-        notEmptyMaybe().getOrElse(() -> {
-            Assert.fail("This should never by called");
-            return null;
-        });
+    public void notEmptyOnNotEmptyValue() {
+        Assert.assertFalse(notEmptyMaybe().empty());
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void notGetsNullValue() {
+        nullMaybe().get();
     }
 
     @Test
@@ -73,6 +73,8 @@ public abstract class TypedMaybeTest<T> {
     }
 
     protected abstract TypedMaybe<T> emptyMaybe();
+
     protected abstract TypedMaybe<T> notEmptyMaybe();
+
     protected abstract TypedMaybe<T> nullMaybe();
 }
