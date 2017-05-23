@@ -1,6 +1,6 @@
 # Commons
 
-Collection of common utility classes I miss in Java language and usually reuse on most of the projects.
+Collection of common utility classes made in object-oriented way.
 
 Feel free to copy any class you like to your projects.
 
