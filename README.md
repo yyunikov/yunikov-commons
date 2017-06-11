@@ -1,6 +1,6 @@
 # Commons
 
-Collection of common utility classes made in object-oriented way.
+Collection of common utility classes made in object-oriented and functional way.
 
 Feel free to copy any class you like to your projects.
 
